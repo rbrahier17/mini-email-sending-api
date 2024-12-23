@@ -19,6 +19,6 @@ Envoyez une requête POST à `/send-email` avec le corps suivant par exemple :
 {
   "to": "destinataire@example.com",
   "subject": "Sujet",
-  "text": "Contenu"
+  "html": "Contenu"
 }
 ```

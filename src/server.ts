@@ -26,10 +26,10 @@ app.use(bodyParser.json());
 
 // Endpoint principal pour envoyer les emails
 app.post("/send-email", async (req: express.Request, res: express.Response): Promise<void> => {
-  const { to, subject, text } = req.body;
+  const { to, subject, html } = req.body;
 
-  if (!to || !subject || !text) {
-    res.status(400).send("Tous les champs (to, subject, text) sont obligatoires.");
+  if (!to || !subject || !html) {
+    res.status(400).json({ success: false, message: "Tous les champs (to, subject, html) sont obligatoires." });
     return;
   }
 
@@ -47,14 +47,14 @@ app.post("/send-email", async (req: express.Request, res: express.Response): Pro
       from: "Anthroquiz",
       to,
       subject,
-      text,
+      html,
     };
 
     await transporter.sendMail(mailOptions);
-    res.status(200).send("Email envoyé avec succès !");
+    res.status(200).json({ success: true, message: "Email envoyé avec succès !" });
   } catch (error) {
     console.error("Erreur lors de l’envoi de l’email :", error);
-    res.status(500).send("Erreur lors de l’envoi de l’email.");
+     res.status(500).json({ success: false, message: "Erreur lors de l’envoi de l’email.", error });
   }
 });
 
