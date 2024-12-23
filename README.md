@@ -1,24 +1,24 @@
-# Mini Email Sending API
+# Mini API d'envoi d'emails
 
-An Express API to send emails using Gmail with Nodemailer.
+Une API Express pour envoyer des emails via Gmail avec Nodemailer.
 
-## Setup
+## Configuration
 
-1. Clone the repo.
-2. Install dependencies: `npm install`
-3. Create a `.env` file from `.env.sample`
+1. Clonez le dépôt.
+2. Installez les dépendances : `npm install`
+3. Créez un fichier `.env` à partir de `.env.sample`.
 
-## Start Server
+## Démarrer le serveur
 
-Run `npm start` (Server runs on http://localhost:3000).
+Exécutez `npm start` (le serveur fonctionne sur http://localhost:3000).
 
-## Usage
+## Utilisation
 
-Send a POST request to `/send-email` with the following body:
+Envoyez une requête POST à `/send-email` avec le corps suivant par exemple :
 ```json
 {
-  "to": "recipient@example.com",
-  "subject": "Subject",
-  "text": "Email content"
+  "to": "destinataire@example.com",
+  "subject": "Sujet",
+  "text": "Contenu"
 }
 ```

@@ -43,7 +43,6 @@ app.post("/send-email", async (req: express.Request, res: express.Response): Pro
       },
     });
 
-    // Options de l'email
     const mailOptions = {
       from: "Anthroquiz",
       to,
@@ -51,7 +50,6 @@ app.post("/send-email", async (req: express.Request, res: express.Response): Pro
       text,
     };
 
-    // Envoi de l'email
     await transporter.sendMail(mailOptions);
     res.status(200).send("Email envoyé avec succès !");
   } catch (error) {
