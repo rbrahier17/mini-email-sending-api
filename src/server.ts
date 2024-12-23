@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
@@ -9,9 +10,17 @@ if (!process.env.GMAIL_ADDRESS || !process.env.GMAIL_PASSWORD) {
   throw new Error("Assurez vous d'avoir un fichier .env avec les variables GMAIL_ADDRESS et GMAIL_PASSWORD");
 }
 
+const FRONTEND_URL = "http://localhost:4200";
+
 const app = express();
 const PORT = 3000;
 
+// Autoriser les requêtes CORS pour l'app frontend
+app.use(
+  cors({
+    origin: FRONTEND_URL,
+  })
+);
 // Middleware pour parser les requêtes JSON
 app.use(bodyParser.json());
 
